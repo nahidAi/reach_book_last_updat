@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/about" android:title=" درباره ما" android:icon="@drawable/information" />
+    <item android:id="@+id/setting" android:title=" تنظیمات" android:icon="@drawable/setting"/>
+    <item android:id="@+id/source" android:title="منابع" android:icon="@drawable/ic_source_circle_black_24dp"/>
+    <item android:id="@+id/comment" android:title="نظر به برنامه" android:icon="@drawable/ic_chat_bubble_black_24dp"/>
+    <item android:id="@+id/exit" android:title=" خروج" android:icon="@drawable/ic_exit_to_app_black_24dp"/>
+
+</menu>

@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">Notification.</string>
+    <string name="title_activity_main3">Main3Activity</string>
+    <string name="sampletext">متن نمونه: بررسی فونت</string>
+    <string name="settings">تنظیمات</string>
+    <string name="keepon">روشن ماندن صفحه نمایش</string>
+    <string name="nightmode">حالت مطالعه در شب</string>
+    <string name="selectfont">انتخاب نوع فونت</string>
+    <string name="selectsize">انتخاب اندازه فونت</string>
+    <string name="emailtodeveloper">ارسال ایمیل به توسعه دهنده</string>
+    <string-array name="font_selector">
+        <item>ایران سنس</item>
+        <item>دروید نسخ</item>
+        <item>یکان</item>
+        <item>ادوبی عربیک</item>
+        <item>کودک</item>
+        <item>فونت پیشفرض گوشی</item>
+
+    </string-array>
+
+
+</resources>

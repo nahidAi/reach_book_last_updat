@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#FB8C00</color>
+    <color name="colorPrimaryDark">#3e3e3e</color>
+    <color name="colorAccent">#FFEB3B</color>
+    <color name="text_dark">#181818</color>
+    <color name="list_background">#f7f7f7</color>
+    <color name="list_background_pressed">#dadada</color>
+    <color name="text_light">#f7f7f7</color>
+    <color name="list_background2">#333333</color>
+    <color name="list_background_pressed2">#525252</color>
+
+
+
+</resources>
