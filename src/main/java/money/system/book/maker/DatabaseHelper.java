@@ -1,6 +1,5 @@
 package money.system.book.maker;
 
-import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
@@ -13,6 +12,9 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
+
+import money.system.book.maker.Models.Quote;
+import money.system.book.maker.Models.Quote2;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
     private static String DB_NAME = "bookdb.sql";
@@ -128,7 +130,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
         return person;
     }
-
     public ArrayList<Quote> selectFavorite() {
         ArrayList<Quote> favorite = new ArrayList<Quote>();
         Cursor cursor = mDataBase.rawQuery("SELECT * FROM tbl WHERE fav = 1", null);
@@ -198,28 +199,42 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         mDataBase.execSQL("UPDATE tbl SET fav=0 WHERE id = " + mId);
     }
 
-    public ArrayList<Quote> readQuoteFromDatabase() {
-        ArrayList<Quote> quoteArrayList = new ArrayList<Quote>();
-        Cursor cursor = mDataBase.rawQuery("SELECT * FROM tbl_b_n ", null);
+    public  ArrayList<Quote2> readQuoteFromDatabase() {
+        ArrayList<Quote2> quoteArrayList = new ArrayList<>();
+        Cursor cursor = mDataBase.rawQuery("SELECT * FROM notif ", null);
         while (cursor.moveToNext()) {
             String name = cursor.getString(cursor.getColumnIndex("name"));
-            String body = cursor.getString(cursor.getColumnIndex("body"));
-            int fav = cursor.getInt(cursor.getColumnIndex("fav"));
-            String image = cursor.getString(cursor.getColumnIndex("image"));
-            int free = cursor.getInt(cursor.getColumnIndex("free"));
+            String content = cursor.getString(cursor.getColumnIndex("content"));
             int id = cursor.getInt(cursor.getColumnIndex("id"));
 
-            Quote quote = new Quote(name, body, fav, image, free, id);
-            quote.setName(name);
-            quote.setBody(body);
-            quote.setFav(fav);
-            quote.setImage(image);
-            quote.setId(id);
-            quoteArrayList.add(quote);
+            Quote2 quote2 = new Quote2(name, content, id);
+            quote2.setName(name);
+            quote2.setContent(content);
+            quote2.setId(id);
+            quoteArrayList.add(quote2);
 
         }
-        // Toast.makeText(context, "" + quoteArrayList.size(), Toast.LENGTH_SHORT).show();
+        // Toast.makeText(mContext, "" + quoteArrayList.size(), Toast.LENGTH_SHORT).show();
         return quoteArrayList;
+    }
+
+    public Quote2 selectNotifById(int mId) {
+        ArrayList<Quote2> notif = new ArrayList<>();
+        Cursor cursor = mDataBase.rawQuery("SELECT * FROM notif WHERE id = '" + mId + "'", null);
+        while (cursor.moveToNext()) {
+            String name = cursor.getString(cursor.getColumnIndex("name"));
+            String content = cursor.getString(cursor.getColumnIndex("content"));
+            int id = cursor.getInt(cursor.getColumnIndex("id"));
+
+            Quote2 quote2 = new Quote2(name, content, id);
+            quote2.setName(name);
+            quote2.setContent(content);
+            quote2.setId(id);
+            notif.add(quote2);
+
+
+        }
+        return notif.get(0);
     }
 
 

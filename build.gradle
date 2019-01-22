@@ -4,7 +4,7 @@ android {
     compileSdkVersion 27
     defaultConfig {
         applicationId "money.system.book.maker"
-        minSdkVersion 16
+        minSdkVersion 17
         targetSdkVersion 27
         versionCode 1
         versionName "1.0"
@@ -35,14 +35,6 @@ dependencies {
     compile 'com.github.sd6352051.niftydialogeffects:niftydialogeffects:1.0.0@aar'
     compile 'org.adw.library:discrete-seekbar:1.0.1'
     compile 'com.facebook.rebound:rebound:0.3.8'
-
-
-
-
-
-
-
-
 
 
 }

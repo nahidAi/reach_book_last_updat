@@ -14,7 +14,7 @@ import android.widget.TextView;
 import java.util.List;
 
 import money.system.book.maker.Activity.Main2Activity;
-import money.system.book.maker.Quote;
+import money.system.book.maker.Models.Quote;
 import money.system.book.maker.R;
 
 public class AdapterBigPerson extends RecyclerView.Adapter<AdapterBigPerson.myViewHolder> {

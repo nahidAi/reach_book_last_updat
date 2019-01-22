@@ -1,29 +1,20 @@
 package money.system.book.maker.Activity;
 
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Typeface;
-import android.os.Build;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Html;
-import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import money.system.book.maker.DatabaseHelper;
-import money.system.book.maker.Quote;
+import money.system.book.maker.Models.Quote;
 import money.system.book.maker.R;
-import money.system.book.maker.SettingActivity;
 import money.system.book.maker.SharedPref;
-import money.system.book.maker.ToggleButton;
 
 public class Main2Activity extends AppCompatActivity {
     private int id;

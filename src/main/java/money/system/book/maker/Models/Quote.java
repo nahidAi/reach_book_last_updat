@@ -1,6 +1,4 @@
-package money.system.book.maker;
-
-
+package money.system.book.maker.Models;
 
 public class Quote {
     public  String name;

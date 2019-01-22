@@ -37,6 +37,10 @@
         <item name="android:padding">6dp</item>
     </style>
 
+    <style name="notifStyle" parent="Theme.AppCompat.Light">
+        <item name="android:background">#e6a0a0</item>
+    </style>
+
 
 
     <!-- Base application theme. -->

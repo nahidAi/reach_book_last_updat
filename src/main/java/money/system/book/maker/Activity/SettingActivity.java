@@ -1,4 +1,4 @@
-package money.system.book.maker;
+package money.system.book.maker.Activity;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -12,15 +12,12 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.AppCompatSpinner;
-import android.support.v7.widget.SwitchCompat;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -31,7 +28,9 @@ import com.gitonway.lee.niftymodaldialogeffects.lib.NiftyDialogBuilder;
 
 import org.adw.library.widgets.discreteseekbar.DiscreteSeekBar;
 
-import money.system.book.maker.Activity.Main2Activity;
+import money.system.book.maker.R;
+import money.system.book.maker.SharedPref;
+import money.system.book.maker.ToggleButton;
 
 
 public class SettingActivity extends AppCompatActivity {

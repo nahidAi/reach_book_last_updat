@@ -2,10 +2,7 @@ package money.system.book.maker.Activity;
 
 import android.app.AlarmManager;
 import android.app.PendingIntent;
-import android.content.Context;
 import android.content.Intent;
-import android.media.RingtoneManager;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
@@ -18,7 +15,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -31,9 +27,7 @@ import co.ronash.pushe.Pushe;
 import money.system.book.maker.Adapter.AdapterFragment;
 import money.system.book.maker.DatabaseHelper;
 import money.system.book.maker.G;
-import money.system.book.maker.NotificationHelper;
 import money.system.book.maker.R;
-import money.system.book.maker.SettingActivity;
 import money.system.book.maker.Task;
 
 public class MainActivity extends AppCompatActivity {
@@ -42,9 +36,6 @@ public class MainActivity extends AppCompatActivity {
     private ImageView menuToolbar;
     DatabaseHelper databaseHelper;
     private FloatingActionButton floatingActionButton;
-    private Button showNotification;
-    Uri path = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
-    NotificationHelper notificationHelper;
 
 
 
@@ -52,33 +43,40 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.navigation_activity_main);
-        Pushe.initialize(this,true);
+        Pushe.initialize(this, true);
 
 
-        Intent intent = new Intent(this, Task.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(this,0,intent,PendingIntent.FLAG_UPDATE_CURRENT);
-
+        //String am_pm = "";
         Calendar calendar = Calendar.getInstance();
-        calendar.set(Calendar.YEAR,2018);
-        calendar.set(Calendar.MONTH,1);
-        calendar.set(Calendar.DAY_OF_MONTH,11);
-        calendar.set(Calendar.HOUR,1);
-        calendar.set(Calendar.MINUTE,32);
-        calendar.set(Calendar.SECOND,00);
+        calendar.set(Calendar.YEAR,2019);
+        calendar.set(Calendar.MONTH,0);
+        calendar.set(Calendar.DAY_OF_MONTH,21);
+        calendar.set(Calendar.HOUR_OF_DAY,17);
+        calendar.set(Calendar.MINUTE,25);
+        calendar.set(Calendar.SECOND, 0);
 
-       // G.alarmManager.set(AlarmManager.RTC_WAKEUP,calendar.getTimeInMillis(),pendingIntent);
-        G.alarmManager.setRepeating(AlarmManager.RTC_WAKEUP,calendar.getTimeInMillis(),1*60*1000,pendingIntent);
-
-
+       /* if (calendar.get(Calendar.AM_PM) == Calendar.AM)
+            am_pm = "AM";
+        else if (calendar.get(Calendar.AM_PM) == Calendar.PM)
+            am_pm = "PM";*/
+//      با این شرط قبل از ارسال نوتیف چک میکنه بعد نوتیفیکیشن میفرسته
+       /* Calendar cur = Calendar.getInstance();
+        if (cur.after(calendar )) {
+            calendar.add(Calendar.DATE, 1);
+        }*/
+        Intent intent = new Intent(this, Task.class);
+        int ALARM1_ID = 10000;
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(this, ALARM1_ID, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+      //  G.alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), AlarmManager.INTERVAL_DAY, pendingIntent);
+       G.alarmManager.setRepeating(AlarmManager.RTC_WAKEUP,calendar.getTimeInMillis(),1440*60*1000,pendingIntent);
 
 
         databaseHelper = new DatabaseHelper(MainActivity.this);
+
+
         setTabOption();
         setNavigationViewAndFloating();
-        notificationHelper = new NotificationHelper(this);
-       // notificationHelper.ListQuoteAndSendNotification();
-
 
 
     }
@@ -104,40 +102,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void setNavigationViewAndFloating() {
-       // showNotification = (Button) findViewById(R.id.showNotification);
-       /* showNotification.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, Main3Activity.class);
-                Intent intent1 = new Intent(Intent.ACTION_VIEW).setData(Uri.parse("https://nikandroid.com/"));
-
-                PendingIntent pi = PendingIntent.getActivity(MainActivity.this, 0, intent, 0);
-                PendingIntent pi1 = PendingIntent.getActivity(MainActivity.this, 0, intent1, 0);
-
-
-                Notification notification = new NotificationCompat.Builder(MainActivity.this)
-                        .setTicker("نوتیف")
-                        .setContentTitle("تایتل")
-                        //.setContentText("این یک تست است")
-                        .setSmallIcon(R.drawable.information)
-                        .setStyle(new android.support.v4.app.NotificationCompat.BigTextStyle().bigText("لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. "))
-                        .setLargeIcon(BitmapFactory.decodeResource(context.getResources(), R.drawable.arrow_right))
-                        // .setStyle(new android.support.v4.app.NotificationCompat.BigPictureStyle().bigPicture(BitmapFactory.decodeResource(context.getResources(),R.drawable.image_1)))
-                        .setAutoCancel(true)
-                        .setSound(path)
-                        .addAction(R.drawable.arrow_right, "Open Activity", pi)
-                        .addAction(R.drawable.arrow_right, "Open Site", pi1)
-                        .build();
-                NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
-                notificationManager.notify(0, notification);
-
-
-            }
-        });*/
-
-
-
-
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         navigationView = (NavigationView) findViewById(R.id.navigation_view);
         floatingActionButton = (FloatingActionButton) findViewById(R.id.floatingActionButton);
@@ -162,13 +126,13 @@ public class MainActivity extends AppCompatActivity {
                 int id = item.getItemId();
                 if (id == R.id.setting) {
                     drawerLayout.closeDrawers();
-                   Intent intent = new Intent(MainActivity.this, SettingActivity.class);
-                   startActivity(intent);
+                    Intent intent = new Intent(MainActivity.this, SettingActivity.class);
+                    startActivity(intent);
 
-                }else if (id == R.id.about){
+                } else if (id == R.id.about) {
                     Toast.makeText(MainActivity.this, " کلیک شد", Toast.LENGTH_SHORT).show();
 
-                }else  if (id == R.id.source){
+                } else if (id == R.id.source) {
                     drawerLayout.closeDrawers();
                     final NiftyDialogBuilder dialogBuilder;
                     dialogBuilder = NiftyDialogBuilder.getInstance(MainActivity.this);
@@ -191,11 +155,11 @@ public class MainActivity extends AppCompatActivity {
                             .show();
 
 
-                }else  if (id == R.id.comment){
+                } else if (id == R.id.comment) {
                     Toast.makeText(MainActivity.this, " کلیک شد", Toast.LENGTH_SHORT).show();
 
 
-                }else if (id == R.id.exit){
+                } else if (id == R.id.exit) {
                     Intent intent = new Intent(Intent.ACTION_MAIN);
                     intent.addCategory(Intent.CATEGORY_HOME);
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
