@@ -44,7 +44,7 @@ public class AdapterBigPerson extends RecyclerView.Adapter<AdapterBigPerson.myVi
         int id = context.getResources().getIdentifier(imgAddress, "drawable", context.getPackageName());
         holder.avatar.setImageResource(id);
         holder.layoutItem.setId(position);
-
+//
         holder.layoutItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
