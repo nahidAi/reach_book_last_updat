@@ -9,9 +9,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Queue;
+
 import money.system.book.maker.Adapter.AdapterBigPerson;
 import money.system.book.maker.Adapter.AdapterFavorite;
 import money.system.book.maker.DatabaseHelper;
+import money.system.book.maker.Models.Quote;
 import money.system.book.maker.R;
 
 public class PageFragment extends Fragment{
@@ -32,14 +37,16 @@ public class PageFragment extends Fragment{
         mPage = getArguments().getInt(ARG_PAGE);
         databaseHelper = new DatabaseHelper(getContext());
 
+
     }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_page, container, false);
+        ArrayList<Quote> data=databaseHelper.selectPerson();
 
         if (mPage == 2){
             recyclerView = (RecyclerView) view.findViewById(R.id.recyclerView);
-            AdapterBigPerson adapterBigPerson = new AdapterBigPerson(getContext(),databaseHelper.selectPerson());
+            AdapterBigPerson adapterBigPerson = new AdapterBigPerson(getContext(),postdata(data));
             recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
             recyclerView.setAdapter(adapterBigPerson);
 
@@ -71,6 +78,19 @@ public class PageFragment extends Fragment{
             recyclerView.setAdapter(adapterFavorite);
 
         }
+    }
+    private List<Quote>postdata(List<Quote>dbList){
+        List<Quote>data = new ArrayList<>();
+        for (int i = 0; i < dbList.size(); i++) {
+            Quote cur =new Quote();
+            cur.name = dbList.get( i ).getName();
+            String uri = "@drawable/"+dbList.get( i ).getImage();
+            cur.id = getResources().getIdentifier( uri,null,getActivity().getPackageName() );
+            cur.body=dbList.get( i ).getBody();
+            cur.isFree = dbList.get(i).getFree();
+            data.add( cur );
+        }
+        return data;
     }
 }
 

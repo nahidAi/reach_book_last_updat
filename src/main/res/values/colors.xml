@@ -9,6 +9,8 @@
     <color name="text_light">#f7f7f7</color>
     <color name="list_background2">#333333</color>
     <color name="list_background_pressed2">#525252</color>
+    <color name="buy_buttoncolor">#00c777</color>
+    <color name="buy_buttoncolor_darker">#26986a</color>
 
 
 

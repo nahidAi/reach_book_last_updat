@@ -5,17 +5,17 @@ public class Quote {
     public  String body;
     public  int fav;
     public  String image;
-    public  int free;
+    public  boolean isFree;
     public  int id;
 
-    public Quote(String name, String body, int fav, String image,int free, int id) {
+   /* public Quote(String name, String body, int fav, String image,boolean free, int id) {
         this.name = name;
         this.body = body;
         this.fav = fav;
         this.image = image;
-        this.free = free;
+        this.isFree = free;
         this.id = id;
-    }
+    }*/
 
     public String getName() {
         return name;
@@ -49,12 +49,12 @@ public class Quote {
         this.image = image;
     }
 
-    public int getFree() {
-        return free;
+    public boolean getFree() {
+        return isFree;
     }
 
-    public void setFree(int free) {
-        this.free = free;
+    public void setFree(boolean free) {
+        this.isFree = free;
     }
 
     public int getId() {

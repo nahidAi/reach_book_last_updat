@@ -3,6 +3,8 @@ package money.system.book.maker.Activity;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -17,12 +19,20 @@ import money.system.book.maker.util.Purchase;
 public class PurchseActivity extends AppCompatActivity implements IabHelper.OnIabSetupFinishedListener, IabHelper.QueryInventoryFinishedListener {
     private IabHelper iabHelper;
     private static final String BOOK_Premium_ID = "mybook";
+    private Button buyButton;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_purchse);
+        buyButton = (Button)findViewById(R.id.buy_button);
+        buyButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                purchasePremiumAccount();
+            }
+        });
         checkMyAccount();
     }
 

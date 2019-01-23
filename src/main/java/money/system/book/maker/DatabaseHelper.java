@@ -12,6 +12,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
+import java.util.List;
 
 import money.system.book.maker.Models.Quote;
 import money.system.book.maker.Models.Quote2;
@@ -108,7 +109,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             mNeedUpdate = true;
     }
 
-    public ArrayList<Quote> selectPerson() {
+    public  ArrayList<Quote> selectPerson() {
         ArrayList<Quote> person = new ArrayList<Quote>();
         Cursor cursor = mDataBase.rawQuery("SELECT * FROM tbl ", null);
         while (cursor.moveToNext()) {
@@ -116,20 +117,22 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             String body = cursor.getString(cursor.getColumnIndex("body"));
             int fav = cursor.getInt(cursor.getColumnIndex("fav"));
             String image = cursor.getString(cursor.getColumnIndex("image"));
-            int free = cursor.getInt(cursor.getColumnIndex("free"));
+            boolean free = cursor.getInt(cursor.getColumnIndex("free")) > 0;
             int id = cursor.getInt(cursor.getColumnIndex("id"));
 
-            Quote quote = new Quote(name, body, fav, image, free, id);
+            Quote quote = new Quote();
             quote.setName(name);
             quote.setBody(body);
             quote.setFav(fav);
             quote.setImage(image);
+            quote.setFree(free);
             quote.setId(id);
             person.add(quote);
 
         }
         return person;
     }
+
     public ArrayList<Quote> selectFavorite() {
         ArrayList<Quote> favorite = new ArrayList<Quote>();
         Cursor cursor = mDataBase.rawQuery("SELECT * FROM tbl WHERE fav = 1", null);
@@ -138,14 +141,15 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             String body = cursor.getString(cursor.getColumnIndex("body"));
             int fav = cursor.getInt(cursor.getColumnIndex("fav"));
             String image = cursor.getString(cursor.getColumnIndex("image"));
-            int free = cursor.getInt(cursor.getColumnIndex("free"));
+            boolean free = cursor.getInt(cursor.getColumnIndex("free")) > 0;
             int id = cursor.getInt(cursor.getColumnIndex("id"));
 
-            Quote quote = new Quote(name, body, fav, image, free, id);
+            Quote quote = new Quote();
             quote.setName(name);
             quote.setBody(body);
             quote.setFav(fav);
             quote.setImage(image);
+            quote.setFree(free);
             quote.setId(id);
             favorite.add(quote);
 
@@ -161,13 +165,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             String body = cursor.getString(cursor.getColumnIndex("body"));
             int fav = cursor.getInt(cursor.getColumnIndex("fav"));
             String image = cursor.getString(cursor.getColumnIndex("image"));
-            int free = cursor.getInt(cursor.getColumnIndex("free"));
+            boolean free = cursor.getInt(cursor.getColumnIndex("free")) > 0;
             int id = cursor.getInt(cursor.getColumnIndex("id"));
 
-            Quote quote = new Quote(name, body, fav, image, free, id);
+            Quote quote = new Quote();
             quote.setName(name);
             quote.setBody(body);
             quote.setFav(fav);
+            quote.setFree(free);
             quote.setImage(image);
             quote.setId(id);
             person.add(quote);
@@ -199,7 +204,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         mDataBase.execSQL("UPDATE tbl SET fav=0 WHERE id = " + mId);
     }
 
-    public  ArrayList<Quote2> readQuoteFromDatabase() {
+    public ArrayList<Quote2> readQuoteFromDatabase() {
         ArrayList<Quote2> quoteArrayList = new ArrayList<>();
         Cursor cursor = mDataBase.rawQuery("SELECT * FROM notif ", null);
         while (cursor.moveToNext()) {
@@ -236,8 +241,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
         return notif.get(0);
     }
-
-
 
 
 }

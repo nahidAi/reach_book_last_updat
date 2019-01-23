@@ -21,7 +21,7 @@ public class Main2Activity extends AppCompatActivity {
     private String name;
     private int fav;
     private String body;
-    private int free;
+    private boolean free;
     private String image;
     private int layoutId;
     private String pageName;

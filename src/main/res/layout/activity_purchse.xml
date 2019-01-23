@@ -1,9 +1,95 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:foo="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="money.system.book.maker.Activity.PurchseActivity">
+    android:orientation="vertical"
+    tools:context="money.system.book.maker.Activity.PurchseActivity"
+    android:weightSum="100">
 
-</android.support.constraint.ConstraintLayout>
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_weight="57"
+        android:gravity="center">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/text_dark"
+            android:textSize="14dp"
+            android:singleLine="true"
+            android:text="این بخش از برنامه قفل می باشد"
+            android:layout_marginBottom="15dp" />
+
+        <ImageView
+            android:layout_width="190dp"
+            android:layout_height="190dp"
+            android:id="@+id/imageView7"
+            android:layout_gravity="center_horizontal"
+            android:src="@mipmap/buyit" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/text_dark"
+            android:textSize="@dimen/very_small_font"
+            android:singleLine="false"
+            android:text="با خرید نسخه کامل تمام قسمت های قفل برنامه را باز کنید."
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="20dp"
+            android:gravity="center" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_weight="43"
+        android:gravity="center">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center"
+            android:layout_marginBottom="15dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#86c674"
+                android:textSize="20dp"
+                android:singleLine="false"
+                android:text="قیمت:3000 تومان"
+                android:layout_marginRight="10dp"
+                android:id="@+id/pr" />
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:id="@+id/imageView8"
+                android:src="@mipmap/unlocked" />
+
+
+        </LinearLayout>
+
+        <Button
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:text="خرید"
+            android:id="@+id/buy_button"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/thebuybutton"
+            android:textColor="#fff"
+            android:textSize="15dp" />
+
+    </LinearLayout>
+</LinearLayout>

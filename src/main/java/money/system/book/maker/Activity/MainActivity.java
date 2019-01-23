@@ -48,11 +48,11 @@ public class MainActivity extends AppCompatActivity {
 
         //String am_pm = "";
         Calendar calendar = Calendar.getInstance();
-        calendar.set(Calendar.YEAR,2019);
+       /* calendar.set(Calendar.YEAR,2019);
         calendar.set(Calendar.MONTH,0);
-        calendar.set(Calendar.DAY_OF_MONTH,21);
-        calendar.set(Calendar.HOUR_OF_DAY,17);
-        calendar.set(Calendar.MINUTE,25);
+        calendar.set(Calendar.DAY_OF_MONTH,21);*/
+        calendar.set(Calendar.HOUR_OF_DAY,6);
+        calendar.set(Calendar.MINUTE,33);
         calendar.set(Calendar.SECOND, 0);
 
        /* if (calendar.get(Calendar.AM_PM) == Calendar.AM)
@@ -60,10 +60,10 @@ public class MainActivity extends AppCompatActivity {
         else if (calendar.get(Calendar.AM_PM) == Calendar.PM)
             am_pm = "PM";*/
 //      با این شرط قبل از ارسال نوتیف چک میکنه بعد نوتیفیکیشن میفرسته
-       /* Calendar cur = Calendar.getInstance();
+        Calendar cur = Calendar.getInstance();
         if (cur.after(calendar )) {
             calendar.add(Calendar.DATE, 1);
-        }*/
+        }
         Intent intent = new Intent(this, Task.class);
         int ALARM1_ID = 10000;
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
